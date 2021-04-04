@@ -1,0 +1,15 @@
+.menu-button > .arrow-button {
+    -fx-padding: 0;
+}
+
+.menu-button > .arrow-button > .arrow {
+    -fx-padding: 0;
+}
+
+.menu-button:focused {
+    -fx-background-color: #727171;
+}
+
+.combo-box > .list-cell {
+    -fx-text-fill: white;
+}
