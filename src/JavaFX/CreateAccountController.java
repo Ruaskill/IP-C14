@@ -10,10 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -28,6 +25,9 @@ import java.util.ResourceBundle;
 
 
 public class CreateAccountController implements Initializable {
+    @FXML
+    private Button homeButton;
+
     @FXML
     private TextField firstName;
 
@@ -61,6 +61,44 @@ public class CreateAccountController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         comboBox.setItems(accountType);
 
+        //action event when mouse enters/exits create account button
+        comboBox.setOnMouseEntered(e -> {
+            comboBox.setStyle("-fx-background-color: #4E4E4E;");
+        });
+        comboBox.setOnMouseExited( e -> {
+            comboBox.setStyle("-fx-background-color:  #2B2828;");
+        });
+
+        //action event when mouse enters/exits create account button
+        createAccountButton.setOnMouseEntered( e -> {
+            createAccountButton.setStyle("-fx-background-color: #4E4E4E;");
+        });
+        createAccountButton.setOnMouseExited( e -> {
+            createAccountButton.setStyle("-fx-background-color:  #2B2828;");
+        });
+
+        //action event when mouse enters/exits home button
+        homeButton.setOnMouseEntered( e -> {
+            homeButton.setStyle("-fx-background-color: #4E4E4E;");
+        });
+        homeButton.setOnMouseExited( e -> {
+            homeButton.setStyle("-fx-background-color:  #2B2828;");
+        });
+
+    }
+
+
+
+    //home button action event
+    public void homeButtonClicked(ActionEvent event) throws IOException {
+        Parent homeParent = FXMLLoader.load(getClass().getResource("Home.fxml"));
+        Scene homeScene = new Scene(homeParent);
+
+        //gets stage information
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setTitle("Home Page");
+        window.setScene(homeScene);
+        window.show();
     }
 
     //make connection to database
@@ -101,7 +139,7 @@ public class CreateAccountController implements Initializable {
     // function to check if username already exists in database
     public boolean checkUserName(TextField userName) {
         String userNameSQL = "SELECT * FROM user WHERE user_name = ?";
-        ResultSet rs;
+        ResultSet rsUser;
         boolean username_exists = false;
 
 
@@ -109,9 +147,9 @@ public class CreateAccountController implements Initializable {
 
             PreparedStatement userPST = connection.prepareStatement(userNameSQL);
             userPST.setString(1, userName.getText());
-            rs = userPST.executeQuery();
+            rsUser = userPST.executeQuery();
 
-            if (rs.next()) {
+            if (rsUser.next()) {
                 username_exists = true;
                 outputText.setStyle("-fx-text-fill: #d33232");
                 outputText.setText("Username Already Exists");
@@ -125,64 +163,95 @@ public class CreateAccountController implements Initializable {
 
     }
 
+    // function to check if username already exists in database
+    public boolean checkEmail(TextField email) {
+        String emailSQL = "SELECT * FROM user WHERE email = ?";
+        ResultSet rsEmail;
+        boolean email_exists = false;
+
+
+        try {
+
+            PreparedStatement emailPST = connection.prepareStatement(emailSQL);
+            emailPST.setString(1, email.getText());
+            rsEmail = emailPST.executeQuery();
+
+            if (rsEmail.next()) {
+                email_exists = true;
+                outputText.setStyle("-fx-text-fill: #d33232");
+                outputText.setText("Email Already Used");
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return email_exists;
+
+    }
+
 
     public void createAccountButtonClicked(ActionEvent event) throws SQLException {
 
         if (verifyFields()) {
             if (!checkUserName(userName)) {
-                if (comboBox.getValue() == "Student") {
-                    try {
-                        Parent studentParent = FXMLLoader.load(getClass().getResource("Student.fxml"));
-                        Scene studentScene = new Scene(studentParent);
+                if (!checkEmail(email)) {
+                    if (comboBox.getValue() == "Student") {
+                        try {
+                            Parent studentParent = FXMLLoader.load(getClass().getResource("Student.fxml"));
+                            Scene studentScene = new Scene(studentParent);
 
-                        //gets stage information
-                        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                        window.setScene(studentScene);
-                        window.show();
+                            //gets stage information
+                            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                            window.setTitle("Student Page");
+                            window.setScene(studentScene);
+                            window.show();
 
-                        String sql = "INSERT INTO user(first_name, last_name, user_name, email, password, account_type) VALUES(?,?,?,?,?,?)";
-                        PreparedStatement pst = connection.prepareStatement(sql);
-                        pst.setString(1, firstName.getText());
-                        pst.setString(2, lastName.getText());
-                        pst.setString(3, userName.getText());
-                        pst.setString(4, email.getText());
-                        pst.setString(5, password.getText());
-                        pst.setString(6, comboBox.getValue());
+                            String sql = "INSERT INTO user(first_name, last_name, user_name, email, password, account_type) VALUES(?,?,?,?,?,?)";
+                            PreparedStatement pst = connection.prepareStatement(sql);
+                            pst.setString(1, firstName.getText());
+                            pst.setString(2, lastName.getText());
+                            pst.setString(3, userName.getText());
+                            pst.setString(4, email.getText());
+                            pst.setString(5, password.getText());
+                            pst.setString(6, comboBox.getValue());
 
-                        pst.execute();
+                            pst.execute();
 
-                        outputText.setText("Account Created!");
-
-
-                    } catch (SQLException | IOException e) {
-                        e.printStackTrace();
-                    }
-                } else if (comboBox.getValue() == "Tutor") {
-                    try {
-                        Parent tutorParent = FXMLLoader.load(getClass().getResource("Tutor.fxml"));
-                        Scene tutorScene = new Scene(tutorParent);
-
-                        //gets stage information
-                        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                        window.setScene(tutorScene);
-                        window.show();
-
-                        String sql = "INSERT INTO user(first_name, last_name, user_name, email, password, account_type) VALUES(?,?,?,?,?,?)";
-                        PreparedStatement pst = connection.prepareStatement(sql);
-                        pst.setString(1, firstName.getText());
-                        pst.setString(2, lastName.getText());
-                        pst.setString(3, userName.getText());
-                        pst.setString(4, email.getText());
-                        pst.setString(5, password.getText());
-                        pst.setString(6, comboBox.getValue());
-
-                        pst.execute();
-
-                        outputText.setText("Account Created!");
+                            outputText.setText("Account Created!");
 
 
-                    } catch (SQLException | IOException e) {
-                        e.printStackTrace();
+                        } catch (SQLException | IOException e) {
+                            e.printStackTrace();
+                        }
+                    } else if (comboBox.getValue() == "Tutor") {
+                        try {
+                            Parent tutorParent = FXMLLoader.load(getClass().getResource("Tutor.fxml"));
+                            Scene tutorScene = new Scene(tutorParent);
+
+                            //gets stage information
+                            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                            window.setTitle("Tutor Page");
+                            window.setScene(tutorScene);
+                            window.show();
+
+                            String sql = "INSERT INTO user(first_name, last_name, user_name, email, password, account_type) VALUES(?,?,?,?,?,?)";
+                            PreparedStatement pst = connection.prepareStatement(sql);
+                            pst.setString(1, firstName.getText());
+                            pst.setString(2, lastName.getText());
+                            pst.setString(3, userName.getText());
+                            pst.setString(4, email.getText());
+                            pst.setString(5, password.getText());
+                            pst.setString(6, comboBox.getValue());
+
+                            pst.execute();
+
+                            outputText.setText("Account Created!");
+
+
+                        } catch (SQLException | IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }

@@ -3,8 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -21,12 +19,11 @@
          <top>
             <HBox style="-fx-background-color: #2B2828;" BorderPane.alignment="CENTER">
                <children>
-                  <MenuButton mnemonicParsing="false" prefHeight="40.0" style="-fx-background-color: #2B2828;" text="Menu" textFill="WHITE">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                      <MenuItem mnemonicParsing="false" text="Action 2" />
-                    </items>
-                  </MenuButton>
+                  <Button fx:id="homeButton" mnemonicParsing="false" onAction="#homeButtonClicked" prefHeight="50.0" prefWidth="80.0" style="-fx-background-color: #2B2828;" stylesheets="@CreateAccount.css" text="Home" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
                </children>
             </HBox>
          </top>
@@ -82,7 +79,7 @@
                <Region layoutX="10.0" layoutY="320.0" prefHeight="30.0" prefWidth="200.0" />
                  <ComboBox fx:id="comboBox" prefHeight="40.0" prefWidth="300.0" promptText="Account Type" style="-fx-background-color: #2B2828;" stylesheets="@CreateAccount.css" />
                  <Region layoutX="10.0" layoutY="305.0" prefHeight="60.0" prefWidth="200.0" />
-                 <Button fx:id="createAccountButton" mnemonicParsing="false" onAction="#createAccountButtonClicked" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #2B2828;" text="Create Account" textFill="WHITE">
+                 <Button fx:id="createAccountButton" mnemonicParsing="false" onAction="#createAccountButtonClicked" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #2B2828;" stylesheets="@CreateAccount.css" text="Create Account" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>
