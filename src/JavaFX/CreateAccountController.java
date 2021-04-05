@@ -56,6 +56,7 @@ public class CreateAccountController implements Initializable {
     public ComboBox<String> comboBox;
 
     ObservableList<String> accountType = FXCollections.observableArrayList("Student", "Tutor");
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         comboBox.setItems(accountType);
@@ -63,8 +64,8 @@ public class CreateAccountController implements Initializable {
     }
 
     //make connection to database
-    connectivity.ConnectionClass connectionClass=new connectivity.ConnectionClass();
-    Connection connection=connectionClass.getConnection();
+    connectivity.ConnectionClass connectionClass = new connectivity.ConnectionClass();
+    Connection connection = connectionClass.getConnection();
 
     //check if any field is empty
     public boolean verifyFields() {
@@ -76,8 +77,7 @@ public class CreateAccountController implements Initializable {
         String confirmPasswordString = String.valueOf(confirmPassword.getText());
 
 
-
-        if(fname.trim().equals("") || lname.trim().equals("") || username.trim().equals("") || emailString.trim().equals("") || passwordString.trim().equals("")) {
+        if (fname.trim().equals("") || lname.trim().equals("") || username.trim().equals("") || emailString.trim().equals("") || passwordString.trim().equals("")) {
 
             outputText.setStyle("-fx-text-fill: #d33232");
             outputText.setText("Fill in the Required Fields");
@@ -86,7 +86,7 @@ public class CreateAccountController implements Initializable {
         }
 
         //check if confirm password equals password
-        else if(!passwordString.equals(confirmPasswordString)) {
+        else if (!passwordString.equals(confirmPasswordString)) {
             outputText.setStyle("-fx-text-fill: #D33232");
             outputText.setText("Password does not match Confirm Password");
             return false;
@@ -111,7 +111,7 @@ public class CreateAccountController implements Initializable {
             userPST.setString(1, userName.getText());
             rs = userPST.executeQuery();
 
-            if(rs.next()) {
+            if (rs.next()) {
                 username_exists = true;
                 outputText.setStyle("-fx-text-fill: #d33232");
                 outputText.setText("Username Already Exists");
@@ -126,71 +126,67 @@ public class CreateAccountController implements Initializable {
     }
 
 
-
-
     public void createAccountButtonClicked(ActionEvent event) throws SQLException {
 
-          if (verifyFields()) {
-              if (!checkUserName(userName)) {
-                  if(comboBox.getValue()=="Student") {
-                      try {
-                          Parent studentParent = FXMLLoader.load(getClass().getResource("Student.fxml"));
-                          Scene studentScene = new Scene(studentParent);
+        if (verifyFields()) {
+            if (!checkUserName(userName)) {
+                if (comboBox.getValue() == "Student") {
+                    try {
+                        Parent studentParent = FXMLLoader.load(getClass().getResource("Student.fxml"));
+                        Scene studentScene = new Scene(studentParent);
 
-                          //gets stage information
-                          Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                          window.setScene(studentScene);
-                          window.show();
+                        //gets stage information
+                        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        window.setScene(studentScene);
+                        window.show();
 
-                          String sql = "INSERT INTO user(first_name, last_name, user_name, email, password, account_type) VALUES(?,?,?,?,?,?)";
-                          PreparedStatement pst = connection.prepareStatement(sql);
-                          pst.setString(1, firstName.getText());
-                          pst.setString(2, lastName.getText());
-                          pst.setString(3, userName.getText());
-                          pst.setString(4, email.getText());
-                          pst.setString(5, password.getText());
-                          pst.setString(6, comboBox.getValue());
+                        String sql = "INSERT INTO user(first_name, last_name, user_name, email, password, account_type) VALUES(?,?,?,?,?,?)";
+                        PreparedStatement pst = connection.prepareStatement(sql);
+                        pst.setString(1, firstName.getText());
+                        pst.setString(2, lastName.getText());
+                        pst.setString(3, userName.getText());
+                        pst.setString(4, email.getText());
+                        pst.setString(5, password.getText());
+                        pst.setString(6, comboBox.getValue());
 
-                          pst.execute();
+                        pst.execute();
 
-                          outputText.setText("Account Created!");
-
-
-                      } catch (SQLException | IOException e) {
-                          e.printStackTrace();
-                      }
-                  }
-                  else if(comboBox.getValue()=="Tutor") {
-                      try {
-                          Parent tutorParent = FXMLLoader.load(getClass().getResource("Tutor.fxml"));
-                          Scene tutorScene = new Scene(tutorParent);
-
-                          //gets stage information
-                          Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                          window.setScene(tutorScene);
-                          window.show();
-
-                          String sql = "INSERT INTO user(first_name, last_name, user_name, email, password, account_type) VALUES(?,?,?,?,?,?)";
-                          PreparedStatement pst = connection.prepareStatement(sql);
-                          pst.setString(1, firstName.getText());
-                          pst.setString(2, lastName.getText());
-                          pst.setString(3, userName.getText());
-                          pst.setString(4, email.getText());
-                          pst.setString(5, password.getText());
-                          pst.setString(6, comboBox.getValue());
-
-                          pst.execute();
-
-                          outputText.setText("Account Created!");
+                        outputText.setText("Account Created!");
 
 
-                      } catch (SQLException | IOException e) {
-                          e.printStackTrace();
-                      }
-                  }
-              }
-          }
+                    } catch (SQLException | IOException e) {
+                        e.printStackTrace();
+                    }
+                } else if (comboBox.getValue() == "Tutor") {
+                    try {
+                        Parent tutorParent = FXMLLoader.load(getClass().getResource("Tutor.fxml"));
+                        Scene tutorScene = new Scene(tutorParent);
 
+                        //gets stage information
+                        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        window.setScene(tutorScene);
+                        window.show();
+
+                        String sql = "INSERT INTO user(first_name, last_name, user_name, email, password, account_type) VALUES(?,?,?,?,?,?)";
+                        PreparedStatement pst = connection.prepareStatement(sql);
+                        pst.setString(1, firstName.getText());
+                        pst.setString(2, lastName.getText());
+                        pst.setString(3, userName.getText());
+                        pst.setString(4, email.getText());
+                        pst.setString(5, password.getText());
+                        pst.setString(6, comboBox.getValue());
+
+                        pst.execute();
+
+                        outputText.setText("Account Created!");
+
+
+                    } catch (SQLException | IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
 
 
     }
