@@ -13,85 +13,90 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.CreateAccountController">
-   <children>
-      <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <top>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.CreateAccountController">
+    <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <top>
             <HBox style="-fx-background-color: #2B2828;" BorderPane.alignment="CENTER">
-               <children>
-                  <Button fx:id="homeButton" mnemonicParsing="false" onAction="#homeButtonClicked" prefHeight="50.0" prefWidth="80.0" style="-fx-background-color: #2B2828;" stylesheets="@CreateAccount.css" text="Home" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Button>
-               </children>
+                <Button fx:id="homeButton" mnemonicParsing="false" onAction="#homeButtonClicked" prefHeight="50.0"
+                        prefWidth="80.0" style="-fx-background-color: #2B2828;" stylesheets="@CreateAccount.css"
+                        text="Home" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font size="17.0"/>
+                    </font>
+                </Button>
             </HBox>
-         </top>
-         <center>
-             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="BOTTOM_CENTER">
-                 <padding>
-                     <Insets top="120.0" />
-                 </padding>
-                 <Text fill="#2b2828" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Account" VBox.vgrow="ALWAYS">
-                    <font>
-                        <Font name="Book Antiqua" size="58.0" />
-                    </font>
-                 </Text>
-                 <Region prefHeight="60.0" />
-                 <HBox alignment="TOP_CENTER" spacing="30.0">
-                    <children>
-                        <TextField fx:id="firstName" prefHeight="40.0" prefWidth="300.0" promptText="First Name">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </TextField>
-                        <TextField fx:id="lastName" prefHeight="40.0" prefWidth="300.0" promptText="Last Name">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </TextField>
-                    </children>
-                 </HBox>
-                 <Region prefHeight="30.0" prefWidth="200.0" />
-                 <TextField fx:id="userName" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Username">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                 </TextField>
-                 <Region layoutX="10.0" layoutY="198.0" prefHeight="30.0" prefWidth="200.0" />
-                 <TextField fx:id="email" layoutX="10.0" layoutY="218.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Email">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                 </TextField>
-                 <Region layoutX="10.0" layoutY="240.0" prefHeight="30.0" prefWidth="200.0" />
-               <PasswordField fx:id="password" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Password">
+        </top>
+        <center>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="BOTTOM_CENTER">
+                <padding>
+                    <Insets top="120.0"/>
+                </padding>
+                <Text fill="#2b2828" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Account" VBox.vgrow="ALWAYS">
                   <font>
-                     <Font size="14.0" />
+                      <Font name="Book Antiqua" size="58.0"/>
                   </font>
-               </PasswordField>
-               <Region layoutX="10.0" layoutY="345.0" prefHeight="30.0" prefWidth="200.0" />
-               <PasswordField fx:id="confirmPassword" layoutX="160.0" layoutY="290.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Confirm Password">
+                </Text>
+                <Region prefHeight="60.0"/>
+                <HBox alignment="TOP_CENTER" spacing="30.0">
+                    <TextField fx:id="firstName" prefHeight="40.0" prefWidth="300.0" promptText="First Name">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </TextField>
+                    <TextField fx:id="lastName" prefHeight="40.0" prefWidth="300.0" promptText="Last Name">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </TextField>
+                </HBox>
+                <Region prefHeight="30.0" prefWidth="200.0"/>
+                <TextField fx:id="userName" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0"
+                           prefWidth="300.0" promptText="Username">
                   <font>
-                     <Font size="14.0" />
+                      <Font size="14.0"/>
                   </font>
-               </PasswordField>
-               <Region layoutX="10.0" layoutY="320.0" prefHeight="30.0" prefWidth="200.0" />
-                 <ComboBox fx:id="comboBox" prefHeight="40.0" prefWidth="300.0" promptText="Account Type" style="-fx-background-color: #2B2828;" stylesheets="@CreateAccount.css" />
-                 <Region layoutX="10.0" layoutY="305.0" prefHeight="60.0" prefWidth="200.0" />
-                 <Button fx:id="createAccountButton" mnemonicParsing="false" onAction="#createAccountButtonClicked" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #2B2828;" stylesheets="@CreateAccount.css" text="Create Account" textFill="WHITE">
+                </TextField>
+                <Region layoutX="10.0" layoutY="198.0" prefHeight="30.0" prefWidth="200.0"/>
+                <TextField fx:id="email" layoutX="10.0" layoutY="218.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                           prefHeight="40.0" prefWidth="300.0" promptText="Email">
+                  <font>
+                      <Font size="14.0"/>
+                  </font>
+                </TextField>
+                <Region layoutX="10.0" layoutY="240.0" prefHeight="30.0" prefWidth="200.0"/>
+                <PasswordField fx:id="password" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0"
+                               prefWidth="300.0" promptText="Password">
                     <font>
-                        <Font size="14.0" />
+                        <Font size="14.0"/>
                     </font>
-                 </Button>
-               <Region layoutX="10.0" layoutY="345.0" prefHeight="30.0" prefWidth="200.0" />
-               <Text fx:id="outputText" fill="#2b2828" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER">
+                </PasswordField>
+                <Region layoutX="10.0" layoutY="345.0" prefHeight="30.0" prefWidth="200.0"/>
+                <PasswordField fx:id="confirmPassword" layoutX="160.0" layoutY="290.0" maxHeight="-Infinity"
+                               maxWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Confirm Password">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </PasswordField>
+                <Region layoutX="10.0" layoutY="320.0" prefHeight="30.0" prefWidth="200.0"/>
+                <ComboBox fx:id="comboBox" prefHeight="40.0" prefWidth="300.0" promptText="Account Type"
+                          style="-fx-background-color: #2B2828;" stylesheets="@CreateAccount.css"/>
+                <Region layoutX="10.0" layoutY="305.0" prefHeight="60.0" prefWidth="200.0"/>
+                <Button fx:id="createAccountButton" mnemonicParsing="false" onAction="#createAccountButtonClicked"
+                        prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #2B2828;"
+                        stylesheets="@CreateAccount.css" text="Create Account" textFill="WHITE">
                   <font>
-                     <Font size="15.0" />
+                      <Font size="14.0"/>
                   </font>
-               </Text>
-             </VBox>
-         </center>
-      </BorderPane>
-   </children>
+                </Button>
+                <Region layoutX="10.0" layoutY="345.0" prefHeight="30.0" prefWidth="200.0"/>
+                <Text fx:id="outputText" fill="#2b2828" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                </Text>
+            </VBox>
+        </center>
+    </BorderPane>
 </AnchorPane>

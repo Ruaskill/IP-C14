@@ -62,28 +62,16 @@ public class CreateAccountController implements Initializable {
         comboBox.setItems(accountType);
 
         //action event when mouse enters/exits create account button
-        comboBox.setOnMouseEntered(e -> {
-            comboBox.setStyle("-fx-background-color: #4E4E4E;");
-        });
-        comboBox.setOnMouseExited( e -> {
-            comboBox.setStyle("-fx-background-color:  #2B2828;");
-        });
+        comboBox.setOnMouseEntered(e -> comboBox.setStyle("-fx-background-color: #4E4E4E;"));
+        comboBox.setOnMouseExited( e -> comboBox.setStyle("-fx-background-color:  #2B2828;"));
 
         //action event when mouse enters/exits create account button
-        createAccountButton.setOnMouseEntered( e -> {
-            createAccountButton.setStyle("-fx-background-color: #4E4E4E;");
-        });
-        createAccountButton.setOnMouseExited( e -> {
-            createAccountButton.setStyle("-fx-background-color:  #2B2828;");
-        });
+        createAccountButton.setOnMouseEntered( e -> createAccountButton.setStyle("-fx-background-color: #4E4E4E;"));
+        createAccountButton.setOnMouseExited( e -> createAccountButton.setStyle("-fx-background-color:  #2B2828;"));
 
         //action event when mouse enters/exits home button
-        homeButton.setOnMouseEntered( e -> {
-            homeButton.setStyle("-fx-background-color: #4E4E4E;");
-        });
-        homeButton.setOnMouseExited( e -> {
-            homeButton.setStyle("-fx-background-color:  #2B2828;");
-        });
+        homeButton.setOnMouseEntered( e -> homeButton.setStyle("-fx-background-color: #4E4E4E;"));
+        homeButton.setOnMouseExited( e -> homeButton.setStyle("-fx-background-color:  #2B2828;"));
 
     }
 
@@ -191,12 +179,12 @@ public class CreateAccountController implements Initializable {
     }
 
 
-    public void createAccountButtonClicked(ActionEvent event) throws SQLException {
+    public void createAccountButtonClicked(ActionEvent event) {
 
         if (verifyFields()) {
             if (!checkUserName(userName)) {
                 if (!checkEmail(email)) {
-                    if (comboBox.getValue() == "Student") {
+                    if (comboBox.getValue().equals("Student")) {
                         try {
                             Parent studentParent = FXMLLoader.load(getClass().getResource("Student.fxml"));
                             Scene studentScene = new Scene(studentParent);
@@ -224,7 +212,7 @@ public class CreateAccountController implements Initializable {
                         } catch (SQLException | IOException e) {
                             e.printStackTrace();
                         }
-                    } else if (comboBox.getValue() == "Tutor") {
+                    } else if (comboBox.getValue().equals("Tutor")) {
                         try {
                             Parent tutorParent = FXMLLoader.load(getClass().getResource("Tutor.fxml"));
                             Scene tutorScene = new Scene(tutorParent);
