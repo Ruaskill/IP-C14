@@ -90,29 +90,43 @@ public class HomeController implements Initializable {
 
     }
 
+    @FXML
+    void loginButtonClicked(ActionEvent event) throws IOException {
+        Parent loginParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Scene createAccountScene = new Scene(loginParent);
+
+        //gets stage information
+        Stage loginWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        loginWindow.setTitle("Create Account");
+        loginWindow.setScene(createAccountScene);
+        loginWindow.show();
+
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //set up Computer Systems description
         csDescriptionLabel.setWrapText(true);
-        csDescriptionLabel.setMaxWidth(500);
+        csDescriptionLabel.setMaxWidth(1580);
         csDescriptionLabel.setTextAlignment(TextAlignment.JUSTIFY);
         csDescriptionLabel.setVisible(false);
 
         //set up Software Engineering description
         seDescriptionLabel.setWrapText(true);
-        seDescriptionLabel.setMaxWidth(500);
+        seDescriptionLabel.setMaxWidth(1580);
         seDescriptionLabel.setTextAlignment(TextAlignment.JUSTIFY);
         seDescriptionLabel.setVisible(false);
 
         //set up Programming description
         pDescriptionLabel.setWrapText(true);
-        pDescriptionLabel.setMaxWidth(500);
+        pDescriptionLabel.setMaxWidth(1580);
         pDescriptionLabel.setTextAlignment(TextAlignment.JUSTIFY);
         pDescriptionLabel.setVisible(false);
 
         //set up Web Security description
         wsDescriptionLabel.setWrapText(true);
-        wsDescriptionLabel.setMaxWidth(500);
+        wsDescriptionLabel.setMaxWidth(1580);
         wsDescriptionLabel.setTextAlignment(TextAlignment.JUSTIFY);
         wsDescriptionLabel.setVisible(false);
 
@@ -209,6 +223,11 @@ public class HomeController implements Initializable {
 
             slide.setToX(-200);
             slide.play();
+
+            csDescriptionLabel.setVisible(false);
+            seDescriptionLabel.setVisible(false);
+            pDescriptionLabel.setVisible(false);
+            wsDescriptionLabel.setVisible(false);
 
             slider.setTranslateX(0);
 

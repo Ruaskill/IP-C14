@@ -60,6 +60,7 @@ public class CreateAccountController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         comboBox.setItems(accountType);
+        comboBox.setValue("Account Type");
 
         //action event when mouse enters/exits create account button
         comboBox.setOnMouseEntered(e -> comboBox.setStyle("-fx-background-color: #4E4E4E;"));
@@ -240,6 +241,9 @@ public class CreateAccountController implements Initializable {
                         } catch (SQLException | IOException e) {
                             e.printStackTrace();
                         }
+                    }
+                    else if (comboBox.getValue().equals("Account Type")){
+                        outputText.setText("Select Account Type");
                     }
                 }
             }

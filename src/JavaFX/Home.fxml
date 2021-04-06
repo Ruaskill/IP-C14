@@ -64,7 +64,7 @@
                            <Font size="17.0" />
                         </font>
                      </Button>
-                     <Button fx:id="loginButton" mnemonicParsing="false" onAction="#homeButtonClicked" prefHeight="50.0" prefWidth="80.0" style="-fx-background-color: #2B2828;" text="Login" textFill="WHITE">
+                     <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginButtonClicked" prefHeight="50.0" prefWidth="80.0" style="-fx-background-color: #2B2828;" text="Login" textFill="WHITE">
                         <font>
                            <Font size="17.0" />
                         </font>
@@ -147,5 +147,8 @@
       <right>
          <Pane prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #2B2828;" BorderPane.alignment="CENTER" />
       </right>
+      <bottom>
+         <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #2B2828;" BorderPane.alignment="CENTER" />
+      </bottom>
    </BorderPane>
 </AnchorPane>
