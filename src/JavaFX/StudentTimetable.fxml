@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.StudentTimetableController">
+    <children>
+        <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #2B2828;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+                <HBox style="-fx-background-color: #2B2828; -fx-border-color: white;" BorderPane.alignment="CENTER">
+                    <children>
+                        <Button fx:id="sReturnButton" mnemonicParsing="false" onAction="#sReturnButtonClicked" prefHeight="50.0" style="-fx-background-color: #2B2828;" text="Return" textFill="WHITE">
+                            <font>
+                                <Font size="17.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </HBox>
+            </top>
+            <center>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <VBox alignment="CENTER" prefHeight="592.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <ImageView fitHeight="800.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../Images/timetable.jpg" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+            </center>
+            <left>
+                <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: white; -fx-background-color: #2B2828;" BorderPane.alignment="CENTER" />
+            </left>
+            <bottom>
+                <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #2B2828; -fx-border-color: white;" BorderPane.alignment="CENTER" />
+            </bottom>
+            <right>
+                <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #2B2828; -fx-border-color: white;" BorderPane.alignment="CENTER" />
+            </right>
+        </BorderPane>
+    </children>
+</AnchorPane>

@@ -94,7 +94,11 @@ public class CreateAccountController implements Initializable {
     connectivity.ConnectionClass connectionClass = new connectivity.ConnectionClass();
     Connection connection = connectionClass.getConnection();
 
-    //check if any field is empty
+
+    /**
+     * check if any field is empty
+     * @return
+     */
     public boolean verifyFields() {
         String fname = firstName.getText();
         String lname = lastName.getText();
@@ -125,9 +129,14 @@ public class CreateAccountController implements Initializable {
         }
     }
 
-    // function to check if username already exists in database
+
+    /**
+     * function to check if username already exists in database
+     * @param userName
+     * @return
+     */
     public boolean checkUserName(TextField userName) {
-        String userNameSQL = "SELECT * FROM user WHERE user_name = ?";
+        String userNameSQL = "SELECT * FROM user WHERE user_name = ? ";
         ResultSet rsUser;
         boolean username_exists = false;
 
@@ -152,7 +161,12 @@ public class CreateAccountController implements Initializable {
 
     }
 
-    // function to check if username already exists in database
+
+    /**
+     * function to check if username already exists in database
+     * @param email
+     * @return
+     */
     public boolean checkEmail(TextField email) {
         String emailSQL = "SELECT * FROM user WHERE email = ?";
         ResultSet rsEmail;
@@ -180,6 +194,10 @@ public class CreateAccountController implements Initializable {
     }
 
 
+    /**
+     * action event when create account button is clicked. Changes scene to either Student scene or Tutor scene depending on account type selected
+     * @param event
+     */
     public void createAccountButtonClicked(ActionEvent event) {
 
         if (verifyFields()) {

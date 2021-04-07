@@ -24,6 +24,11 @@
                         <Font size="17.0" />
                      </font>
                   </Button>
+                  <Text fx:id="userID" fill="#2b2828" strokeType="OUTSIDE" strokeWidth="0.0" text="user_id">
+                     <HBox.margin>
+                        <Insets left="100.0" />
+                     </HBox.margin>
+                  </Text>
                </children>
             </HBox>
          </top>

@@ -1,16 +1,240 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.StudentController">
-   <children>
-      <Text layoutX="14.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are now in the Student Page">
-         <font>
-            <Font size="41.0" />
-         </font>
-      </Text>
-   </children>
+   <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <left>
+         <AnchorPane fx:id="slider" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #2B2828;" BorderPane.alignment="CENTER">
+            <VBox layoutY="9.0" prefHeight="359.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Courses Available" underline="true">
+                  <font>
+                     <Font size="17.0" />
+                  </font>
+                  <VBox.margin>
+                     <Insets left="35.0" top="20.0" />
+                  </VBox.margin>
+               </Text>
+               <Region prefHeight="60.0" prefWidth="200.0" />
+               <Button fx:id="csButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #2B2828;" stylesheets="@Home.css" text="Computer Systems" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font size="15.0" />
+                  </font>
+               </Button>
+               <Button fx:id="seButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #2B2828;" stylesheets="@Home.css" text="Software Engineering" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font size="15.0" />
+                  </font>
+               </Button>
+               <Button fx:id="pButton" layoutX="10.0" layoutY="75.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #2B2828;" stylesheets="@Home.css" text="Programming" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font size="15.0" />
+                  </font>
+               </Button>
+               <Button fx:id="wsButton" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #2B2828;" stylesheets="@Home.css" text="Web Security" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font size="15.0" />
+                  </font>
+               </Button>
+            </VBox>
+         </AnchorPane>
+      </left>
+      <top>
+         <AnchorPane style="-fx-background-color: #2B2828;" BorderPane.alignment="CENTER">
+            <children>
+               <HBox prefHeight="50.0" prefWidth="114.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="94.0" AnchorPane.topAnchor="0.0">
+                  <padding>
+                     <Insets right="10.0" />
+                  </padding>
+                  <children>
+                     <Button fx:id="logOutButton" mnemonicParsing="false" onAction="#logOutButtonClicked" prefHeight="50.0" prefWidth="153.0" style="-fx-background-color: #2B2828;" text="Log Out" textFill="WHITE">
+                        <font>
+                           <Font size="17.0" />
+                        </font>
+                     </Button>
+                  </children>
+               </HBox>
+               <Label fx:id="exitCourses" layoutX="42.0" layoutY="12.0" text="Courses" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font size="17.0" />
+                  </font>
+                  <graphic>
+                     <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../Images/3Lines.jpg" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+               </Label>
+               <Label fx:id="enterCourses" layoutX="42.0" layoutY="12.0" text="Courses" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font size="17.0" />
+                  </font>
+                  <graphic>
+                     <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../Images/3Lines.jpg" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+               </Label>
+            </children>
+         </AnchorPane>
+      </top>
+      <center>
+         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+               <Label fx:id="pDescriptionLabel" layoutX="50.0" layoutY="40.0" text="In this course the student will gain a broad understanding of modern computer programming. The student will acquire introductory skills in problem analysis, solution design, and program construction . Through practical programming activities, the student will gain an appreciation of the nature and history of computer programming.">
+                  <font>
+                     <Font size="19.0" />
+                  </font>
+                  <padding>
+                     <Insets left="20.0" />
+                  </padding>
+               </Label>
+               <Label fx:id="wsDescriptionLabel" layoutX="50.0" layoutY="40.0" text="If you’re working in the cybersecurity field, or are interested in getting a foot in the door, it’s crucial that you understand how cyberattacks are perpetrated and the best practices for preventing and responding to them. This short, free, non-credit course is the perfect way to get started on building this knowledge. In this course, you’ll learn from experts in the field about the fundamentals of web security and some of the latest threats and their defenses. You’ll gain a deeper, technical understanding of cybersecurity, the Internet’s common and emerging vulnerabilities, and techniques for addressing those vulnerabilities.">
+                  <font>
+                     <Font size="19.0" />
+                  </font>
+                  <padding>
+                     <Insets left="20.0" />
+                  </padding>
+               </Label>
+               <Label fx:id="seDescriptionLabel" layoutX="50.0" layoutY="40.0" text="Software Engineering includes the application of specialised knowledge and skills to develop different kinds of large, complex software systems. The programme also provides the opportunity to specialise in data analytics, extracting knowledge from large data sets. There is continuous demand for software engineers and data analysts both internationally and nationally. This award will provide an opportunity for students, to gain up-to-date  knowledge and skills in software engineering and/or data analytics, including machine learning. The course consists of both a taught component and a project.">
+                  <font>
+                     <Font size="19.0" />
+                  </font>
+                  <padding>
+                     <Insets left="20.0" />
+                  </padding>
+               </Label>
+               <Label fx:id="csDescriptionLabel" layoutX="50.0" layoutY="40.0" text="Explores the principles underlying the design and implementation of modern computer systems with emphasis on operating systems. Fundamental topics in computer architecture and parallel/distributed computing are also covered. You will study Concurrency and Processes: Co-routines and processes. Synchronization. Scheduling, Resource management, Memory management: Address translation; TLBs. Segmentation and paging. Virtual memory, Device management: Device drivers. File systems. Access control; protection and authorization, and Networks and Distributed Systems: Communication protocols. Distributed file systems">
+                  <font>
+                     <Font size="19.0" />
+                  </font>
+                  <padding>
+                     <Insets left="20.0" />
+                  </padding>
+               </Label>
+               <VBox prefHeight="570.0" prefWidth="600.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="100.0">
+                  <children>
+                     <VBox alignment="TOP_CENTER" prefHeight="341.0" prefWidth="600.0" style="-fx-background-color: #2B2828;">
+                        <children>
+                           <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" underline="true">
+                              <font>
+                                 <Font size="27.0" />
+                              </font>
+                              <VBox.margin>
+                                 <Insets top="20.0" />
+                              </VBox.margin>
+                           </Text>
+                           <Region prefHeight="10.0" prefWidth="200.0" />
+                           <Text fx:id="userNameText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                              <font>
+                                 <Font size="22.0" />
+                              </font>
+                           </Text>
+                           <Region layoutX="10.0" layoutY="60.0" prefHeight="30.0" prefWidth="200.0" />
+                           <HBox spacing="10.0">
+                              <children>
+                                 <Label text="Full Name:" textFill="WHITE">
+                                    <font>
+                                       <Font size="22.0" />
+                                    </font>
+                                 </Label>
+                                 <Text fx:id="fullNameText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <HBox.margin>
+                                       <Insets />
+                                    </HBox.margin>
+                                    <font>
+                                       <Font size="22.0" />
+                                    </font>
+                                 </Text>
+                              </children>
+                           </HBox>
+                           <Region layoutX="10.0" layoutY="90.0" prefHeight="30.0" prefWidth="200.0" />
+                           <HBox layoutX="10.0" layoutY="120.0" spacing="10.0">
+                              <children>
+                                 <Label text="Email:" textFill="WHITE">
+                                    <font>
+                                       <Font size="22.0" />
+                                    </font>
+                                 </Label>
+                                 <Text fx:id="emailText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <HBox.margin>
+                                       <Insets />
+                                    </HBox.margin>
+                                    <font>
+                                       <Font size="23.0" />
+                                    </font>
+                                 </Text>
+                              </children>
+                           </HBox>
+                           <Region layoutX="10.0" layoutY="141.0" prefHeight="30.0" prefWidth="200.0" />
+                           <HBox layoutX="10.0" layoutY="151.0" spacing="10.0">
+                              <children>
+                                 <Label text="Student ID:" textFill="WHITE">
+                                    <font>
+                                       <Font size="22.0" />
+                                    </font>
+                                 </Label>
+                                 <Text fx:id="studentIDText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <HBox.margin>
+                                       <Insets />
+                                    </HBox.margin>
+                                    <font>
+                                       <Font size="22.0" />
+                                    </font>
+                                 </Text>
+                              </children>
+                           </HBox>
+                        </children>
+                     </VBox>
+                     <Region prefHeight="60.0" prefWidth="200.0" />
+                     <Button fx:id="timeTableButton" mnemonicParsing="false" onAction="#timeTableClicked" prefHeight="60.0" prefWidth="600.0" style="-fx-background-color: #2B2828;" text="TimeTable" textFill="WHITE">
+                        <font>
+                           <Font size="25.0" />
+                        </font>
+                     </Button>
+                     <Region layoutX="10.0" layoutY="351.0" prefHeight="60.0" prefWidth="200.0" />
+                     <ComboBox fx:id="comboBox" onAction="#comboChanged" prefHeight="60.0" prefWidth="600.0" promptText="Select Course" style="-fx-background-color: #2B2828;" stylesheets="@Student.css">
+                        <padding>
+                           <Insets left="214.0" />
+                        </padding>
+                     </ComboBox>
+                     <Region layoutX="10.0" layoutY="465.0" prefHeight="60.0" prefWidth="200.0" />
+                     <HBox alignment="TOP_CENTER">
+                        <children>
+                           <Button fx:id="bookCourseButton" maxHeight="-Infinity" mnemonicParsing="false" onAction="#bookCourseButtonClicked" prefHeight="60.0" style="-fx-background-color: #2B2828;" text="Book Course" textFill="WHITE">
+                              <font>
+                                 <Font size="25.0" />
+                              </font>
+                           </Button>
+                        </children>
+                     </HBox>
+                  </children>
+               </VBox>
+            </children>
+         </AnchorPane>
+      </center>
+      <right>
+         <Pane prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #2B2828;" BorderPane.alignment="CENTER" />
+      </right>
+      <bottom>
+         <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #2B2828;" BorderPane.alignment="CENTER" />
+      </bottom>
+   </BorderPane>
 </AnchorPane>

@@ -41,6 +41,46 @@ public class LoginController implements Initializable {
     @FXML
     private Label createAccountLabel;
 
+
+    /**
+     * This method has not been implemented properly. Intended purpose was to store the user ID from the database to be used in Student or Tutor scenes
+     * @param userNameText
+     */
+//    public Text getUserID() {
+//        String usernameString = userName.getText();
+//
+//
+//        PreparedStatement st;
+//        ResultSet rs;
+//        String query = "SELECT * FROM user WHERE user_name = ?";
+//
+//        try {
+//            st = connection.prepareStatement(query);
+//            st.setString(1, usernameString);
+//
+//            rs = st.executeQuery();
+//            rs.next();
+//            userID.setText(rs.getString("user_id"));
+//        } catch (SQLException throwables) {
+//            throwables.printStackTrace();
+//        }
+//
+//        return userID;
+//    }
+
+    public void setUserNameText(Text userNameText) {
+        this.userNameText = userNameText;
+        userNameText.setText("username");
+    }
+
+    private Text userNameText;
+
+
+    /**
+     * action event when home button is clicked. Takes you to home screen
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void homeButtonClicked(ActionEvent event) throws IOException {
         Parent homeParent = FXMLLoader.load(getClass().getResource("Home.fxml"));
@@ -52,6 +92,7 @@ public class LoginController implements Initializable {
         window.setScene(homeScene);
         window.show();
     }
+
 
 
     @Override
@@ -92,14 +133,17 @@ public class LoginController implements Initializable {
     connectivity.ConnectionClass connectionClass = new connectivity.ConnectionClass();
     Connection connection = connectionClass.getConnection();
 
-    //action event for login button
+    /**
+     * action event when login button is clicked. Takes you to either Student or Tutor scene depending on account type in database
+     * @param event
+     */
     public void loginButtonClicked(ActionEvent event) {
         String usernameString = userName.getText();
         String passwordString = String.valueOf(passwordField.getText());
 
         PreparedStatement st;
         ResultSet rs;
-        String query = "SELECT * FROM user WHERE user_name = ? AND password = ?";
+        String query = "SELECT * FROM user WHERE user_name = ? AND password = ? ";
 
         try {
             st = connection.prepareStatement(query);
@@ -112,6 +156,9 @@ public class LoginController implements Initializable {
                 if (rs.getString("account_type").equals("Student")) {
                     Parent studentParent = FXMLLoader.load(getClass().getResource("Student.fxml"));
                     Scene studentScene = new Scene(studentParent);
+
+
+
 
                     //gets stage information
                     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -65,6 +65,11 @@ public class HomeController implements Initializable {
     private Label wsDescriptionLabel;
 
 
+    /**
+     * action event when home button clicked. Takes you to home scene i.e. the same scene
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void homeButtonClicked(ActionEvent event) throws IOException {
         Parent homeParent = FXMLLoader.load(getClass().getResource("Home.fxml"));
@@ -77,6 +82,11 @@ public class HomeController implements Initializable {
         window.show();
     }
 
+    /**
+     * action event when create account clicked. Takes you to create account scene
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void createAccountClicked(ActionEvent event) throws IOException {
         Parent createAccountParent = FXMLLoader.load(getClass().getResource("CreateAccount.fxml"));
@@ -90,6 +100,11 @@ public class HomeController implements Initializable {
 
     }
 
+    /**
+     * action event when login button clicked. Takes you to login scene.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void loginButtonClicked(ActionEvent event) throws IOException {
         Parent loginParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
@@ -97,7 +112,7 @@ public class HomeController implements Initializable {
 
         //gets stage information
         Stage loginWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        loginWindow.setTitle("Create Account");
+        loginWindow.setTitle("Login");
         loginWindow.setScene(createAccountScene);
         loginWindow.show();
 
