@@ -84,7 +84,7 @@ public class LoginController implements Initializable {
     @FXML
     void homeButtonClicked(ActionEvent event) throws IOException {
         Parent homeParent = FXMLLoader.load(getClass().getResource("Home.fxml"));
-        Scene homeScene = new Scene(homeParent);
+        Scene homeScene = new Scene(homeParent, 1800, 700);
 
         //gets stage information
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -117,7 +117,7 @@ public class LoginController implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Scene createAccountScene = new Scene(createAccountParent);
+            Scene createAccountScene = new Scene(createAccountParent, 1000, 900);
 
             //gets stage information
             Stage createAccountWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -141,6 +141,7 @@ public class LoginController implements Initializable {
         String usernameString = userName.getText();
         String passwordString = String.valueOf(passwordField.getText());
 
+
         PreparedStatement st;
         ResultSet rs;
         String query = "SELECT * FROM user WHERE user_name = ? AND password = ? ";
@@ -150,12 +151,13 @@ public class LoginController implements Initializable {
             st.setString(1, usernameString);
             st.setString(2, passwordString);
 
+
             rs = st.executeQuery();
 
             while(rs.next()) {
                 if (rs.getString("account_type").equals("Student")) {
                     Parent studentParent = FXMLLoader.load(getClass().getResource("Student.fxml"));
-                    Scene studentScene = new Scene(studentParent);
+                    Scene studentScene = new Scene(studentParent, 1800, 1200);
 
 
 
@@ -168,7 +170,7 @@ public class LoginController implements Initializable {
                 }
                 else if(rs.getString("account_type").equals("Tutor")) {
                     Parent tutorParent = FXMLLoader.load(getClass().getResource("Tutor.fxml"));
-                    Scene tutorScene = new Scene(tutorParent);
+                    Scene tutorScene = new Scene(tutorParent, 1800, 1500);
 
                     //gets stage information
                     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

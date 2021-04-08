@@ -99,7 +99,7 @@ public class TutorController implements Initializable {
     @FXML
     void logOutButtonClicked(ActionEvent event) throws IOException {
         Parent homeParent = FXMLLoader.load(getClass().getResource("Home.fxml"));
-        Scene homeScene = new Scene(homeParent, 600, 500);
+        Scene homeScene = new Scene(homeParent, 1800, 700);
 
         //gets stage information
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -120,7 +120,7 @@ public class TutorController implements Initializable {
     @FXML
     void timeTableClicked(ActionEvent event) throws IOException {
         Parent timetableParent = FXMLLoader.load(getClass().getResource("TutorTimetable.fxml"));
-        Scene timetableScene = new Scene(timetableParent, 600, 500);
+        Scene timetableScene = new Scene(timetableParent, 1300, 600);
 
         //gets stage information
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

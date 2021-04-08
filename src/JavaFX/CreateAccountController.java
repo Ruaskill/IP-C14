@@ -64,24 +64,23 @@ public class CreateAccountController implements Initializable {
 
         //action event when mouse enters/exits create account button
         comboBox.setOnMouseEntered(e -> comboBox.setStyle("-fx-background-color: #4E4E4E;"));
-        comboBox.setOnMouseExited( e -> comboBox.setStyle("-fx-background-color:  #2B2828;"));
+        comboBox.setOnMouseExited(e -> comboBox.setStyle("-fx-background-color:  #2B2828;"));
 
         //action event when mouse enters/exits create account button
-        createAccountButton.setOnMouseEntered( e -> createAccountButton.setStyle("-fx-background-color: #4E4E4E;"));
-        createAccountButton.setOnMouseExited( e -> createAccountButton.setStyle("-fx-background-color:  #2B2828;"));
+        createAccountButton.setOnMouseEntered(e -> createAccountButton.setStyle("-fx-background-color: #4E4E4E;"));
+        createAccountButton.setOnMouseExited(e -> createAccountButton.setStyle("-fx-background-color:  #2B2828;"));
 
         //action event when mouse enters/exits home button
-        homeButton.setOnMouseEntered( e -> homeButton.setStyle("-fx-background-color: #4E4E4E;"));
-        homeButton.setOnMouseExited( e -> homeButton.setStyle("-fx-background-color:  #2B2828;"));
+        homeButton.setOnMouseEntered(e -> homeButton.setStyle("-fx-background-color: #4E4E4E;"));
+        homeButton.setOnMouseExited(e -> homeButton.setStyle("-fx-background-color:  #2B2828;"));
 
     }
-
 
 
     //home button action event
     public void homeButtonClicked(ActionEvent event) throws IOException {
         Parent homeParent = FXMLLoader.load(getClass().getResource("Home.fxml"));
-        Scene homeScene = new Scene(homeParent);
+        Scene homeScene = new Scene(homeParent, 1800, 700);
 
         //gets stage information
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -97,6 +96,7 @@ public class CreateAccountController implements Initializable {
 
     /**
      * check if any field is empty
+     *
      * @return
      */
     public boolean verifyFields() {
@@ -132,6 +132,7 @@ public class CreateAccountController implements Initializable {
 
     /**
      * function to check if username already exists in database
+     *
      * @param userName
      * @return
      */
@@ -164,6 +165,7 @@ public class CreateAccountController implements Initializable {
 
     /**
      * function to check if username already exists in database
+     *
      * @param email
      * @return
      */
@@ -196,6 +198,7 @@ public class CreateAccountController implements Initializable {
 
     /**
      * action event when create account button is clicked. Changes scene to either Student scene or Tutor scene depending on account type selected
+     *
      * @param event
      */
     public void createAccountButtonClicked(ActionEvent event) {
@@ -206,7 +209,7 @@ public class CreateAccountController implements Initializable {
                     if (comboBox.getValue().equals("Student")) {
                         try {
                             Parent studentParent = FXMLLoader.load(getClass().getResource("Student.fxml"));
-                            Scene studentScene = new Scene(studentParent);
+                            Scene studentScene = new Scene(studentParent, 1800, 1200);
 
                             //gets stage information
                             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -234,7 +237,7 @@ public class CreateAccountController implements Initializable {
                     } else if (comboBox.getValue().equals("Tutor")) {
                         try {
                             Parent tutorParent = FXMLLoader.load(getClass().getResource("Tutor.fxml"));
-                            Scene tutorScene = new Scene(tutorParent);
+                            Scene tutorScene = new Scene(tutorParent, 1800, 1500);
 
                             //gets stage information
                             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -259,8 +262,7 @@ public class CreateAccountController implements Initializable {
                         } catch (SQLException | IOException e) {
                             e.printStackTrace();
                         }
-                    }
-                    else if (comboBox.getValue().equals("Account Type")){
+                    } else if (comboBox.getValue().equals("Account Type")) {
                         outputText.setText("Select Account Type");
                     }
                 }

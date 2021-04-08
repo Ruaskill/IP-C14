@@ -73,7 +73,7 @@ public class HomeController implements Initializable {
     @FXML
     void homeButtonClicked(ActionEvent event) throws IOException {
         Parent homeParent = FXMLLoader.load(getClass().getResource("Home.fxml"));
-        Scene homeScene = new Scene(homeParent, 600, 500);
+        Scene homeScene = new Scene(homeParent, 1800, 700);
 
         //gets stage information
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -90,7 +90,7 @@ public class HomeController implements Initializable {
     @FXML
     void createAccountClicked(ActionEvent event) throws IOException {
         Parent createAccountParent = FXMLLoader.load(getClass().getResource("CreateAccount.fxml"));
-        Scene createAccountScene = new Scene(createAccountParent);
+        Scene createAccountScene = new Scene(createAccountParent, 1000, 900);
 
         //gets stage information
         Stage createAccountWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -108,7 +108,7 @@ public class HomeController implements Initializable {
     @FXML
     void loginButtonClicked(ActionEvent event) throws IOException {
         Parent loginParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
-        Scene createAccountScene = new Scene(loginParent);
+        Scene createAccountScene = new Scene(loginParent, 1000, 900);
 
         //gets stage information
         Stage loginWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();

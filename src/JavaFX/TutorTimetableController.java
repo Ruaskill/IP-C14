@@ -21,7 +21,7 @@ public class TutorTimetableController implements Initializable {
     @FXML
     void returnButtonClicked(ActionEvent event) throws IOException {
         Parent tutorParent = FXMLLoader.load(getClass().getResource("Tutor.fxml"));
-        Scene tutorScene = new Scene(tutorParent);
+        Scene tutorScene = new Scene(tutorParent, 1800, 1500);
 
         //gets stage information
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
